@@ -25,6 +25,30 @@ fun main() {
     val number8: Long = number6?.toLong() ?: 0L     // safe call / elvis를 통해 처리
 
     printAgeIfPersonNullable(null)
+
+
+    // String interpolation
+    val person = Person("지누리즈", 100)
+    val log = "사람의 이름은 ${person.name}이고 나이는 ${person.age}세 입니다."
+
+    val name = "지누리즈"
+    println("이름 : $name")   // 그냥 변수를 사용할 경우, 중괄호 생략 가능 (그러나 사용하는 것이 가독성을 위해서는 좋다.)
+
+
+    // javascript의 백틱(`)같이 사용할 수 있음
+    val str = """
+    ABC
+    EFG
+    ${name}
+    HIJ
+    """.trimIndent()
+    println(str)
+
+
+    // String Indexing
+    val str1 = "ABCDE"
+    println(str1[0])    // A
+    println(str1[2])    // C
 }
 
 fun printAgeIfPerson(obj: Any) {
