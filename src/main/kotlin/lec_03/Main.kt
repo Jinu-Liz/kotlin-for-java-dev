@@ -1,5 +1,7 @@
 package lec_03
 
+
+
 fun main() {
     /**
      * number1의 경우, 타입이 int이기 때문에 에러가 발생한다.
@@ -21,4 +23,26 @@ fun main() {
     val number6: Int? = 3
     val number7: Long = number6.toLong()    // 에러
     val number8: Long = number6?.toLong() ?: 0L     // safe call / elvis를 통해 처리
+
+    printAgeIfPersonNullable(null)
+}
+
+fun printAgeIfPerson(obj: Any) {
+    if (obj is Person3) {   // java에서는 instance of를 사용하지만, kotlin에서는 is를 사용한다.
+        val person = obj as Person3     // 캐스팅 시 as를 사용 ( (Person3) obj )
+        println(person.age)
+    }
+
+    if (obj is Person3) {
+        println(obj.name)   // 조건문에 해당 타입을 체크하는 로직이 있는 경우, 내부에서 자동완성을 사용할 수 있다. (스마트 캐스트)
+    }
+
+    if (obj !is Person3) {  // 반대의 경우, is 앞에 '!'를 붙인다.
+        println(obj.name)
+    }
+}
+
+fun printAgeIfPersonNullable(obj: Any?) {
+    val person = obj as? Person3    // null이 들어올 경우, NPE가 발생하므로 as 뒤에 '?'를 붙여 nullable하다는 것을 알려줘야한다.
+    println(person?.age)
 }
