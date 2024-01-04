@@ -11,6 +11,20 @@ fun main() {
 
     val str3: String? = null
     println(str3?.length ?: 0) // Elvis 연산자. (앞의 연산 결과가 null이면 뒤의 값을 사용)
+
+
+    /**
+     * Java 코드를 가져다 사용할 경우, annotation을 인식한다.
+     * startsWithA 메서드의 경우, null이 들어갈 수 없으므로 @NotNull을 사용하면 에러가 나지 않지만,
+     * annotation @Nullable을 사용할 경우, 에러가 발생한다.
+     * annotation이 없는 경우에는 에러가 발생하지 않으나, 런타임 예외(NPE)가 발생할 수 있다.
+     */
+    val person = lec_02.Person("공부하는 개발자")
+    startsWithA(person.name)
+}
+
+fun startsWithA(str: String): Boolean {
+    return str.startsWith("A")
 }
 
 fun startsWithA1(str: String?): Boolean {
@@ -47,7 +61,8 @@ fun startsWithA3_kt(str: String?): Boolean {
     return str?.startsWith("A") ?: false
 }
 
-// null 아님 단언. null이 결코 발생할 수 없다고 생각되는 경우 사용한다. null이 들어오면 런타임 에러 발생.
 fun startsWith(str: String?): Boolean {
+
+    // null 아님 단언. null이 결코 발생할 수 없다고 생각되는 경우 사용한다. null이 들어오면 런타임 에러 발생.
     return str!!.startsWith("A")
 }
