@@ -46,3 +46,8 @@ fun startsWithA3_kt(str: String?): Boolean {
 
     return str?.startsWith("A") ?: false
 }
+
+// null 아님 단언. null이 결코 발생할 수 없다고 생각되는 경우 사용한다. null이 들어오면 런타임 에러 발생.
+fun startsWith(str: String?): Boolean {
+    return str!!.startsWith("A")
+}
