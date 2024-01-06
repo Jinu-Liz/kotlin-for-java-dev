@@ -22,6 +22,16 @@ fun main() {
     // Lazy 연산을 통해 true이면 뒤를 실행하지 않는다.
     if (fun1() || fun2()) println("본문")     // fun2는 실행하지 않음
     if (fun2() && fun1()) println("본문")     // fun1는 실행하지 않음
+
+
+    /**
+     * kotlin에서는 객체마다 연산자를 직접 정의할 수 있음.
+     * KotlinMoney의 plus함수를 자동으로 사용함.
+     */
+    val koMoney1 = KotlinMoney(1000L)
+    val koMoney2 = KotlinMoney(1000L)
+
+    println(koMoney1 + koMoney2)
 }
 
 fun fun1(): Boolean {
