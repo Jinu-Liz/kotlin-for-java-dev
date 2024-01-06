@@ -13,5 +13,8 @@ public class Main {
     System.out.println(money2 == money3);   // 주소값이 같으니 true
     System.out.println(money.equals(money2));   // 필드값을 비교하기 때문에 true
 
+    JavaMoney money4 = new JavaMoney(3000L);
+    JavaMoney money5 = new JavaMoney(4000L);
+    System.out.println(money4.plus(money5));  // JavaMoney(amount=5000)
   }
 }
