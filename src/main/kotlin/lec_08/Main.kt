@@ -10,6 +10,19 @@ fun main() {
      * 이를 'named argument'라고 한다.
      */
     repeat("Hello World", useNewLine = false)
+
+
+    // 실수로 파라미터 순서를 바꿔서 넣을 수 있음.
+    printNameAndGender("MALE", "지누리즈")
+
+    // named argument를 사용하면 builder의 장점을 가지게 된다. (값 셋팅 시 명확성)
+    printNameAndGender(name = "지누리즈", gender = "MALE")
+
+    /**
+     * java의 함수를 가져다 쓸 때에는 named argument를 쓸 수 없다.
+     * byte코드로 변환하게되면 파라미터의 이름을 보존하고 있지 않기 때문.
+     */
+    Main.repeat(str = "A")
 }
 
 fun maxV1(a: Int, b: Int): Int {
@@ -60,4 +73,9 @@ fun repeat(
             print(str)
         }
     }
+}
+
+fun printNameAndGender(name: String, gender: String) {
+    println(name)
+    println(gender)
 }
