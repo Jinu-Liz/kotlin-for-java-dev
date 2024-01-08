@@ -2,7 +2,9 @@ package lec_08;
 
 public class Main {
   public static void main(String[] args) {
-
+    String[] array = new String[]{"A", "B", "C"};
+    printAll(array);
+    printAll("A", "B", "C");
   }
 
   public int max(int a, int b) {
@@ -31,5 +33,12 @@ public class Main {
 
   public void repeat(String str) {
     repeat(str, 3);
+  }
+
+  // 가변인자 사용
+  public static void printAll(String... strings) {
+    for (String str : strings) {
+      System.out.println(str);
+    }
   }
 }

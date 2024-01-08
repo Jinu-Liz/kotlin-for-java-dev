@@ -23,6 +23,13 @@ fun main() {
      * byte코드로 변환하게되면 파라미터의 이름을 보존하고 있지 않기 때문.
      */
     Main.repeat(str = "A")
+
+
+    printAll("A", "B", "C")
+
+    // 가변인자 사용 시 변수를 파라미터로 넘길 때는, 변수 앞에 '*'을 붙여준다. (spread 연산자)
+    val array = arrayOf("A", "B", "C")
+    printAll(*array)
 }
 
 fun maxV1(a: Int, b: Int): Int {
@@ -78,4 +85,11 @@ fun repeat(
 fun printNameAndGender(name: String, gender: String) {
     println(name)
     println(gender)
+}
+
+// 가변인자 사용 함수
+fun printAll(vararg strings: String) {
+    for (str in strings) {
+        println(str)
+    }
 }
