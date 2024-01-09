@@ -2,12 +2,22 @@ package lec_09;
 
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 public class JavaPerson {
 
   private final String name;
 
   private int age;
+
+  public JavaPerson(String name, int age) {
+    if (age <= 0) throw new IllegalArgumentException(String.format("나이는 %s일 수 없습니다.", age));
+
+    this.name = name;
+    this.age = age;
+  }
+
+  public JavaPerson(String name) {
+    this(name, 1);
+  }
 
   public String getName() {
     return name;

@@ -14,4 +14,6 @@ fun main() {
     val javaPerson = JavaPerson("지누리즈", 100)
     println(javaPerson.name)
     println(javaPerson.age)
+
+    val construct = KotlinPerson()
 }
