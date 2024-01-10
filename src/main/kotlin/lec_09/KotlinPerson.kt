@@ -27,7 +27,7 @@ class KotlinPerson(name: String, var age: Int) {
 
     // class내에서 함수처럼 만들 수도 있으나
     fun isAdult(): Boolean {
-        return  this.age >= 20
+        return this.age >= 20
     }
 
     /**
@@ -49,7 +49,18 @@ class KotlinPerson(name: String, var age: Int) {
      * 이 경우에는 필드명 대신 field를 사용한다.
      * 해당 프로퍼티를 사용할 경우, get을 통해 자기 자신을 호출하고 다시 get을 호출하여
      * 무한 루프 현상이 발생하기 때문.
+     * 따라서, 자기 자신을 가리키는 예약어를 사용한다.(backing field)
      */
     val name: String = name
         get() = field.uppercase()
+
+    /**
+     * custom setter 사용법.
+     * 그러나 보통 setter를 지양하고, 별도의 함수를 만들어 처리하기 때문에
+     * 잘 사용하지는 않는다.
+     */
+    var name2: String = name
+        set(value) {
+            field = value.uppercase()
+        }
 }
