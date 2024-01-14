@@ -39,6 +39,33 @@ fun main() {
 
     for ((idx, value) in numbers.withIndex()) println("$idx $value")
 
+
+    // -- set -- //
+    val set = setOf(100, 200, 100)      //  list와 동일하게 불변.
+    val set2 = mutableSetOf(100, 200, 100)      // 가변
+    set.add(400)
+    set2.add(400)
+
+
+    // -- map -- //
+    val oldMap = mutableMapOf<Int, String>()
+
+    // 값을 넣을 때 2가지 방법
+    oldMap.put(1, "MONDAY")
+    oldMap[1] = "MONDAY"
+
+    val newMap = mapOf(1 to "MONDAY", 2 to "TUESDAY")   // to 라는 중위함수를 이용하여 만들 수 있다.
+
+    for (key in newMap.keys) {
+        println(key)
+        println(newMap.get(key))
+        println(newMap[key])
+    }
+
+    for ((key, value) in newMap.entries) {
+        println(key)
+        println(value)
+    }
 }
 
 private fun printNumbers(numbers: List<Int>) {
