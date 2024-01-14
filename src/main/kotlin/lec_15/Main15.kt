@@ -66,6 +66,27 @@ fun main() {
         println(key)
         println(value)
     }
+
+
+    // -- null 가능성 -- //
+    val list1 : List<Int?> = mutableListOf()    // 리스트에 null이 들어갈 수 있지만, 리스트는 null이 아님
+    val list2 : List<Int>? = mutableListOf()    // 리스트에는 null이 들어갈 수 없지만, 리스트는 null일 수 있음
+    val list3 : List<Int?>? = mutableListOf()   // 리스트에 null이 들어갈 수도 있고, 리스트가 null일 수도 있음
+
+
+    /**
+     * java의 경우, 읽기 전용 컬렉션과 변경 가능 컬렉션을 구분하지 않는다.
+     * 따라서, kotlin의 불변 list를 가져간 후에 element를 추가할 수 있다.
+     * 추가한 이후, kotlin에 되돌려주는 경우 오동작을 일으킬 수 있다.
+     * 또한 java는 nullable / non-nullable 타입을 구분하지 않기 때문에
+     * non-nullable 리스트를 가져간 후, null을 추가하고 돌려줄 수 있다.
+     * 이런 경우, 또 에러가 날 수 있다.
+     * 따라서 Java에서 호출되면 컬렉션 내용이 변할 수 있음을 감안하여 방어로직을 짜거나
+     * 코틀린 쪽에서 Collections.unmodifableXXX()를 활용하여 변경 자체를 막아야한다.
+     *
+     * 또한 java 컬렉션을 사용할 때, 플랫폼 타입을 신경써야 한다. ( List<Int?> / List<Int>? / List<Int?>? )
+     * 따라서 java코드를 보고, 맥락을 확인하여 가져오는 지점을 wrapping 해야한다. (영향범위 최소화)
+     */
 }
 
 private fun printNumbers(numbers: List<Int>) {
