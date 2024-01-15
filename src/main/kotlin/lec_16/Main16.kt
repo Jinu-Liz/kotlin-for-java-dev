@@ -65,6 +65,41 @@ infix fun Int.add2(other: Int): Int {
     return this + other
 }
 
+
+/**
+ * inline 함수
+ * 함수가 호출되는 대신, 함수를 호출한 지점에 함수 본문을 그대로 복사한다.
+ * 함수를 파라미터로 전달할 때, 함수가 함수를 부르고 그 함수가 또 다른 함수를 부르는 형태가 계속되면
+ * call chain에 오버헤드(overhead)가 생기게 된다.
+ * 이를 줄이기 위해 사용한다.
+ * 그러나 inline 함수는 성능측정과 함께 적절하게 사용되어야한다.
+ */
 inline fun Int.add3(other: Int): Int {
     return this + other
+}
+
+
+/**
+ * 지역함수
+ * 함수로 추출하면 좋을 것 같은데, 이 함수를 현재 함수 내에서만 사용하고 싶을 때 사용한다.
+ * 그러나, depth가 깊어지기도 하고 코드가 깔끔해지지 않는다.
+ */
+
+// 해당 내 코드가 중복된다.
+fun createPerson(firstName: String, lastName: String): Person {
+    if (firstName.isEmpty()) throw IllegalArgumentException("firstName은 비어있을 수 없습니다! 현재 값 : $firstName")
+
+    if (lastName.isEmpty()) throw IllegalArgumentException("lastName은 비어있을 수 없습니다! 현재 값 : $lastName")
+
+    return Person(firstName, lastName, 1)
+}
+
+fun createPersonRefactoring(firstName: String, lastName: String): Person {
+    fun validateName(name: String, fieldName: String) {
+        if (name.isEmpty()) throw IllegalArgumentException("${fieldName}은 비어있을 수 없습니다! 현재 값 : $name")
+    }
+    validateName(firstName, "firstName")
+    validateName(lastName, "lastName")
+
+    return Person(firstName, lastName, 1)
 }
