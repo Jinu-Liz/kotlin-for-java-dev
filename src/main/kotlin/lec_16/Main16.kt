@@ -18,6 +18,11 @@ fun main() {
 
     val srt2: Srt = Srt()
     srt2.isExpensive()  // Srt의 확장함수
+
+
+    3.add(4)
+    3.add2(4)
+    3 add2 4    // 중위함수 사용
 }
 
 
@@ -43,4 +48,23 @@ val String.lastChar: Char
 fun Person.nextYearAge(): Int {
     println("확장 함수")
     return this.age + 2
+}
+
+
+/**
+ * 중위함수
+ */
+
+// 확장함수
+fun Int.add(other: Int): Int {
+    return this + other
+}
+
+// 확장함수 + 중위함수
+infix fun Int.add2(other: Int): Int {
+    return this + other
+}
+
+inline fun Int.add3(other: Int): Int {
+    return this + other
 }
