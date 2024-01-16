@@ -47,7 +47,7 @@ fun main() {
     // 타입을 추론 가능하기 때문에 생략 가능
     filterFruits(fruits) { fruit -> fruit.name == "사과" }
 
-    // it을 사용하면 fruit -> fruit를 생략 가능하다.
+    // it을 사용하면 람다의 파라미터를 직접 참조할 수 있다.
     filterFruits(fruits) { it.name == "사과" }
 }
 
