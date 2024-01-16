@@ -33,4 +33,31 @@ fun main() {
     }
 
     val isApple4: (Fruit) -> Boolean = { fruit: Fruit -> fruit.name == "사과" }
+
+    // Fruit를 변수로 받고, Boolean을 반환하는 함수를 타입으로 받기 때문에 함수를 매개변수로 넘길 수 있다.
+    filterFruits(fruits, isApple)
+    filterFruits(fruits, isApple2)
+
+    // 소괄호 안에 중괄호가 들어가 있는 것이 어색하기 때문에 밖으로 뺄 수 있다.
+    filterFruits(fruits, { fruit: Fruit -> fruit.name == "사과" })
+
+    // 밖으로 뺀 형태
+    filterFruits(fruits) { fruit: Fruit -> fruit.name == "사과" }
+
+    // 타입을 추론 가능하기 때문에 생략 가능
+    filterFruits(fruits) { fruit -> fruit.name == "사과" }
+
+    // it을 사용하면 fruit -> fruit를 생략 가능하다.
+    filterFruits(fruits) { it.name == "사과" }
+}
+
+private fun filterFruits(
+    fruits: List<Fruit>, filter: (Fruit) -> Boolean
+): List<Fruit> {
+    val results = mutableListOf<Fruit>()
+    for (fruit in fruits) {
+        if (filter(fruit)) results.add(fruit)
+    }
+
+    return results
 }
