@@ -35,6 +35,14 @@ public class Main17 {
      * 따라서 함수를 넘겨주고 있는 것처럼 보이지만 사실은 그렇지 않다.
       */
     filterFruitsWithLambda(fruits, Fruit::isApple);
+
+    /**
+     * java에서 람다를 사용할 때엔 final인 변수 혹은 실질적으로 final인 변수만 사용할 수 있다.
+     * 따라서, 아래와 같이 바나나 -> 수박으로 바뀌는 경우에는 사용할 수 없다.
+     */
+    String targetFruitName = "바나나";
+    targetFruitName = "수박";
+    filterFruitsWithLambda(fruits, fruit -> targetFruitName.equals(fruit.getName()));
   }
 
   // 사과만 찾고 싶을 때

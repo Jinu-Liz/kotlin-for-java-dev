@@ -49,6 +49,17 @@ fun main() {
 
     // it을 사용하면 람다의 파라미터를 직접 참조할 수 있다.
     filterFruits(fruits) { it.name == "사과" }
+
+
+    /**
+     * java에서는 final이 아닌 변수는 람다에서 사용할 수 없으나,
+     * kotlin에서는 람다가 시작하는 지점에 참조하고 있는 변수들을 모두 포획하여 그 정보를 가지고 있다.
+     * 따라서, 바나나 -> 수박으로 바뀌어도 아무 문제 없이 사용할 수 있다.
+     * 이렇게 해야만 람다를 진정한 1급 시민으로 간주할 수 있으며, 이러한 데이터 구조를 Closure라고 부른다.
+     */
+    var targetFruitName = "바나나"
+    targetFruitName = "수박"
+    filterFruits(fruits) { it.name == targetFruitName }
 }
 
 private fun filterFruits(
