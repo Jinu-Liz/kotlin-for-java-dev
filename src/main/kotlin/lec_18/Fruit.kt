@@ -9,4 +9,7 @@ data class Fruit(
     fun nullOrValue(): Int? {
         return id.toInt()
     }
+
+    val isSamePrice: Boolean
+        get() = factoryPrice == currentPrice
 }
