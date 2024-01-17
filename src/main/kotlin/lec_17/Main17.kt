@@ -47,7 +47,7 @@ fun main() {
     // 타입을 추론 가능하기 때문에 생략 가능
     filterFruits(fruits) { fruit -> fruit.name == "사과" }
 
-    // it을 사용하면 람다의 파라미터를 직접 참조할 수 있다.
+    // it을 사용하면 람다의 파라미터를 직접 참조할 수 있다. 그러나 이 방법은 어떤 값이 넘어왔는지 알 수 없으므로 비추천.
     filterFruits(fruits) { it.name == "사과" }
 
 
