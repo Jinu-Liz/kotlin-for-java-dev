@@ -84,4 +84,34 @@ fun main() {
 
     // 마지막 값 또는 null을 가져온다.
     fruits.lastOrNull()
+
+    // K: 과일이름, V: List<과일> 인 Map
+    val mapByName: Map<String, List<Fruit>> = fruits.groupBy { fruit -> fruit.name }
+
+    // id를 Key로 하는 단일 객체 Map
+    val fruitMap: Map<Long, Fruit> = fruits.associateBy { fruit -> fruit.id }
+
+    // key, value를 각 조건에 따라 만든 Map
+    val map: Map<String, List<Long>> = fruits.groupBy({ fruit -> fruit.name }, { fruit -> fruit.factoryPrice })
+
+    // map에도 다른 기능들을 대부분 사용 가능.
+    val filteredMap = mapByName.filter { (key, value) -> key == "사과" }
+
+    // 여러 list를 단일 list로 변경
+    val flatMap = fruitsInList.flatMap { list -> list.filter { fruit -> fruit.factoryPrice == fruit.currentPrice } }
+
+    // 확장 함수를 사용할 수도 있음.
+    val samePriceFruits = fruitsInList.flatMap { list -> list.samePriceFilter }
+
+    // 중첩 컬렉션을 단일 컬렉션으로 변경
+    fruitsInList.flatten()
 }
+
+private fun filterFruits(
+    fruits: List<Fruit>, filter: (Fruit) -> Boolean
+): List<Fruit> {
+    return fruits.filter(filter)    // filter함수 바로 넣어줄 수 있음.
+}
+
+val List<Fruit>.samePriceFilter: List<Fruit>
+    get() = this.filter(Fruit::isSamePrice)
