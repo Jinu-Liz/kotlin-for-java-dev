@@ -49,4 +49,35 @@ fun main() {
     val person3 = NoDataPerson2("지누리즈", 200)
     val (name4, age4) = person3
 
+
+    // forEach 등의 문법 안에서는 break / continue를 사용 할 수 없다.
+    val numbers = listOf(1, 2, 3)
+    numbers.map { number -> number + 1 }
+        .forEach { number ->
+            if (number == 3) continue
+            println(number)
+        }
+
+    // 그러나 break문을 굳이 써야하겠다고 하면 run함수와 return@run을 사용하면 된다.
+    run {
+        numbers.map { number -> number + 1 }
+            .forEach { number ->
+                if (number == 3) return@run
+                println(number)
+            }
+    }
+
+    // continue를 사용하고 싶은 경우에는 return@forEach를 사용하면 된다.
+    numbers.map { number -> number + 1 }
+        .forEach { number ->
+            if (number == 3) return@forEach
+            println(number)
+        }
+
+    /**
+     * 그러나 break, continue를 사용할 경우에는
+     * 가급적 익숙한 for문을 사용하는 것이 좋다.
+     * 코드를 읽는 사람이 이해하기 쉽고, 작성하는 사람도 잘못된 프로그래밍의 가능성을
+     * 막을 수 있기 때문.
+     */
 }
