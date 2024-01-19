@@ -25,6 +25,10 @@ data class Person(
     fun growOld() {
         age += 1
     }
+
+    fun isAdult(): Boolean {
+        return age > 20
+    }
 }
 
 class Person2(
