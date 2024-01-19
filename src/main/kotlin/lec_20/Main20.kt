@@ -95,4 +95,19 @@ fun scopeFunction(person: Person) {
     println(modifiedFirstItem)
 
 
+    /**
+     * run의 사용처
+     */
+
+    /**
+     * 객체를 만들어 DB에 바로 저장하고, 그 인스턴스를 활용할 때
+     * 그러나 더 익숙한 코드가 낫고, 반복되는 생성 후처리는 생상자/프로퍼티/init block으로 넣는 것이 좋으므로
+     * 잘 사용하지는 않는 편이 좋은듯.
+      */
+    val personRepository = PersonRepository()
+    val person2 = Person("지누리즈", 200).run { personRepository::save }
+
+    // 이게 더 익숙하고 편함
+    val person3 = personRepository.save(Person("지누리즈", 200))
+
 }
