@@ -110,4 +110,30 @@ fun scopeFunction(person: Person) {
     // 이게 더 익숙하고 편함
     val person3 = personRepository.save(Person("지누리즈", 200))
 
+
+    /**
+     * apply의 사용처
+     */
+
+    /**
+     * 객체 설정을 할 때에
+     * 객체를 수정하는 로직이 call chain 중간에 필요할 때
+     */
+    fun createPerson(
+        name: String,
+        age: Int,
+        hobby: String,
+    ): Person2 {
+        return Person2(
+            name = name,
+            age = age
+        ).apply {
+            this.hobby = hobby
+        }
+    }
+
+    // 이론상 이런 코드도 가능.
+    val person4 = Person("지누리즈", 200)
+    person4.apply { this.growOld() }
+        .let { println(it) }
 }

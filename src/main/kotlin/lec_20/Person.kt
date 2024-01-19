@@ -2,7 +2,7 @@ package lec_20
 
 data class Person(
     val name: String,
-    val age: Int,
+    var age: Int
 ) {
     fun getNumberOrNull(): Int? {
         return if (age <= 0) {
@@ -21,7 +21,17 @@ data class Person(
     fun getNumberOrNull3(): Int? {
         return age.takeUnless { it <= 0 }
     }
+
+    fun growOld() {
+        age += 1
+    }
 }
+
+class Person2(
+    val name: String,
+    val age: Int,
+    var hobby: String
+)
 
 class PersonRepository() {
     fun save(person: Person) {
